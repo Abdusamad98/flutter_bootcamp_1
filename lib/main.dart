@@ -1,28 +1,17 @@
-//   17/06/2022
-// runApp()
-// MaterialApp
-// Scaffold
-// Container
-// Text
-// Colors
-// Image.assets/network
-// MyColors class MyIcons
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bootcamp_1/utils/colors.dart';
 import 'package:flutter_bootcamp_1/utils/icons.dart';
 import 'package:flutter_bootcamp_1/utils/styles.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-void main() => runApp(MyFlutterApp());
+void main() => runApp(MyApp());
 
-class MyFlutterApp extends StatelessWidget {
-  const MyFlutterApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: MyHomeWidget(),
     );
   }
@@ -34,83 +23,85 @@ class MyHomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyColors.C_E5E5E5,
       appBar: AppBar(
-        elevation: 4,
         centerTitle: true,
-        title: Text("The second lesson",
-            style: MyTextStyles.oswaldBold700
-                .copyWith(color: MyColors.white, fontSize: 25)),
-        actions: [
-          GestureDetector(
-            onTap: () {},
-            onDoubleTap: () {
-              print("double tapped");
-            },
-            child: Icon(
-              Icons.add,
-              color: MyColors.white,
-              size: 25,
-            ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          SvgPicture.asset(
-            MyIcons.profile,
-            color: MyColors.white,
-          ),
-          SizedBox(
-            width: 20,
-          )
-        ],
-        leading: GestureDetector(
-          onTap: () {
-            print("Back pressed");
-          },
-          child: Icon(Icons.arrow_back_ios),
+        title: Text(
+          "[0] No meals added",
+          style: MyTextStyles.oswaldMedium500.copyWith(fontSize: 20),
+        ),
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: MyColors.C_E5E5E5,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
+        ),
+        elevation: 0.0,
+        backgroundColor: MyColors.C_E5E5E5,
+        leading: Icon(
+          Icons.arrow_back,
+          color: MyColors.black,
         ),
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 50,
+          Expanded(
+            flex: 1,
+            child: Center(
+                child: Image.asset(
+              MyIcons.pitsa,
+              fit: BoxFit.cover,
+            )),
           ),
-         
           Expanded(
-              flex: 30,
-              child: Container(
-                color: Colors.yellow,
-                child: Column(children: []),
-              )),
-          Expanded(flex: 40, child: SizedBox()),
-          Expanded(
-              flex: 30,
-              child: Container(
-                color: Colors.cyan,
-                child: Row(
-                  children: [
-                    Expanded(
-                        flex: 40,
-                        child: Container(
-                          color: Colors.red,
-                        )),
-                    Expanded(
-                        flex: 60,
-                        child: Container(
-                          color: Colors.black,
-                        )),
-                  ],
-                ),
-              )),
+              flex: 1,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Meals Your Way",
+                    style: MyTextStyles.oswaldBold700.copyWith(
+                      fontSize: 40,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "Pick your own Vegs & Carbs assembles your meals with endles",
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    style: MyTextStyles.oswaldExtraLight300
+                        .copyWith(fontSize: 24, color: Colors.grey),
+                  ),
+                  Expanded(child: SizedBox()),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Add Meal",
+                      textAlign: TextAlign.center,
+                      style: MyTextStyles.oswaldMedium500.copyWith(
+                        fontSize: 25,
+                        color: MyColors.white,
+                      ),
+                    ),
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.symmetric(horizontal: 36, vertical: 10)),
+                        backgroundColor:
+                        MaterialStateProperty.all(Colors.black),
+                        shape:
+                        MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(28.0),
+                            ))),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                ],
+              ))
         ],
       ),
     );
   }
-}
-
-List<Widget> getMyCustomWidgets() {
-  List<Widget> result = [];
-  result.add(Icon(Icons.abc_sharp));
-  result.add(Icon(Icons.access_alarms));
-  return result;
 }
