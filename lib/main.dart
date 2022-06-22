@@ -52,7 +52,7 @@ class MyHomeWidget extends StatelessWidget {
                   style: MyTextStyles.oswaldBold700.copyWith(fontSize: 25),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -173,7 +173,7 @@ class MyHomeWidget extends StatelessWidget {
                       ))),
                 ),
                 SizedBox(
-                  height: 14,
+                  height: 14
                 )
               ],
             ),
