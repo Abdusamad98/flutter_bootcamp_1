@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_1/utils/colors.dart';
 
 class MyTextStyles {
-
   static final oswaldLight200 = TextStyle(
     fontWeight: FontWeight.w200,
     fontSize: 14,
